@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f8ff',
+        backgroundColor: '#add8e6',
     },
     title: {
         fontSize: 24,
         marginBottom: 20,
     },
     buttonContainer: {
-        backgroundColor: '#add8e6',
+        backgroundColor: '#f0f8ff',
         margin: 10,
         width: windowWidth * 0.5,
         borderRadius: 5,

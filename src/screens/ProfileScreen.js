@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'e6e6fa',
+        backgroundColor: '#add8e6',
     },
     title: {
         fontSize: 24,
         marginBottom: 20,
     },
     buttonContainer: {
-        backgroundColor: '#dda0dd',
+        backgroundColor: '#f0f8ff',
         margin: 10,
         width: windowWidth * 0.5,
         borderRadius: 5,
