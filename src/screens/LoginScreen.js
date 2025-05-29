@@ -1,57 +1,63 @@
-import React, {useState} from "react";
-import { Button, Dimensions, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
-
+import{useState} from "react";
+import { Dimensions, StyleSheet, Text, View, Alert, TextInput,TouchableOpacity } from "react-native";
+ 
 const windowWidth = Dimensions.get('window').width;
-
+ 
 export default function LoginScreen({ navigation }) {
-    const [usuario = 'usuario', setUsuario] = useState('');
-    const [senha = 'senha', setSenha] = useState('');
-
-    const verificarCampos = () => {
-     if (usuario == usuario && senha != senha) {
-          Alert.alert('Senha incorreta.');
-          setSenha('');
-        } else if (usuario != usuario && senha == senha) {
-            Alert.alert('Usuário incorreto.');
-            setUsuario('');
-            setSenha('');
-        } else if (usuario != usuario && senha != senha) {
-          Alert.alert('Usuário e senha incorretos.');
-          setUsuario('');
-          setSenha('');
-        } else {
-         Alert.alert('Bem vindo ao site!');
-          navigation.navigate('Home');
-        }
-      };
-
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
+ 
+  const usuarioCorreto = 'usuario';
+  const senhaCorreta = 'senha';
+ 
+  const verificarCampos = () => {
+ 
+     if (usuario !== usuarioCorreto || senha != senhaCorreta) {
+      Alert.alert('Usuário ou senha incorretos.');
+      setUsuario('');
+      setSenha('');
+    } else {
+      Alert.alert('Login feito, Bem vindo!');
+      navigation.navigate('Home');
+    }
+  };
+ 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>LOGIN SCREEN</Text>
-            <TextInput
-                style={styles.input}
-                placeholder='Digite o seu usuário:'
-                keyboardType='default'
-                value={usuario}
-                onChangeText={setUsuario}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder='Digite a sua senha:'
-                keyboardType='senha'
-                value={senha}
-                onChangeText={setSenha}
-            />
-                <View style={styles.buttonContainer}>
-                    <Button
-                        title="Entrar"
-                        onPress={verificarCampos()}
-                    />
-                </View>
-        </View>
-    );
+    <View style={styles.container}>
+      <Text style={styles.title}>LOGIN SCREEN</Text>
+      <TextInput
+        style={styles.input}
+        placeholder='usuario:'
+        value={usuario}
+        onChangeText={setUsuario}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder='senha:'
+        value={senha}
+        onChangeText={setSenha}
+      />
+      <TouchableOpacity style={{
+        backgroundColor: 'lightblue',
+         padding: 10,
+         paddingHorizontal: 90,
+          borderRadius: 5,
+           margin: 10,
+           marginBottom: 20,
+           
+        }} onPress={verificarCampos}>
+ 
+        <Text style={{
+               fontFamily: 'arial' ,
+               color: 'white',
+              textAlign:'center',
+              fontSize: 18,
+               }}>LOGAR</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
-
+ 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -63,10 +69,13 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginBottom: 20,
     },
-    buttonContainer: {
-        backgroundColor: '#f0f8ff',
-        margin: 10,
-        width: windowWidth * 0.5,
-        borderRadius: 5,
-    },
+    input: {
+    width: '75%',
+    padding: 10,
+    marginVertical: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+    backgroundColor: '#f0f8ff',
+  },
 });
