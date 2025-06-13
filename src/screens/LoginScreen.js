@@ -1,18 +1,15 @@
-import{useState} from "react";
-import { Dimensions, StyleSheet, Text, View, Alert, TextInput,TouchableOpacity } from "react-native";
- 
-const windowWidth = Dimensions.get('window').width;
- 
+import { useState } from "react";
+import { StyleSheet, Text, View, Alert, TextInput, TouchableOpacity } from "react-native";
+
 export default function LoginScreen({ navigation }) {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
- 
+
   const usuarioCorreto = 'usuario';
   const senhaCorreta = 'senha';
- 
+
   const verificarCampos = () => {
- 
-     if (usuario !== usuarioCorreto || senha != senhaCorreta) {
+    if (usuario !== usuarioCorreto || senha !== senhaCorreta) {
       Alert.alert('Usuário ou senha incorretos.');
       setUsuario('');
       setSenha('');
@@ -21,8 +18,8 @@ export default function LoginScreen({ navigation }) {
       navigation.navigate('Home');
     }
   };
- 
-    return (
+
+  return (
     <View style={styles.container}>
       <Text style={styles.title}>LOGIN SCREEN</Text>
       <TextInput
@@ -36,40 +33,27 @@ export default function LoginScreen({ navigation }) {
         placeholder='senha:'
         value={senha}
         onChangeText={setSenha}
+        secureTextEntry={true}
       />
-      <TouchableOpacity style={{
-        backgroundColor: 'lightblue',
-         padding: 10,
-         paddingHorizontal: 90,
-          borderRadius: 5,
-           margin: 10,
-           marginBottom: 20,
-           
-        }} onPress={verificarCampos}>
- 
-        <Text style={{
-               fontFamily: 'arial' ,
-               color: 'white',
-              textAlign:'center',
-              fontSize: 18,
-               }}>LOGAR</Text>
+      <TouchableOpacity style={styles.botao} onPress={verificarCampos}>
+        <Text style={styles.botaoTexto}>LOGAR</Text>
       </TouchableOpacity>
     </View>
   );
 }
- 
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#add8e6',
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-    },
-    input: {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#add8e6',
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 40,
+  },
+  input: {
     width: '75%',
     padding: 10,
     marginVertical: 10,
@@ -77,5 +61,19 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 5,
     backgroundColor: '#f0f8ff',
+  },
+  botao: {
+    backgroundColor: 'lightcyan',
+    padding: 10,
+    paddingHorizontal: 60,
+    borderRadius: 10,
+    margin: 50,
+    marginBottom: 30,
+  },
+  botaoTexto: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 18,
+    fontFamily: 'System', 
   },
 });
